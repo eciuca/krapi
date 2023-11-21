@@ -74,6 +74,28 @@
 					</excludes>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>cz.habarta.typescript-generator</groupId>
+				<artifactId>typescript-generator-maven-plugin</artifactId>
+				<version>3.2.1263</version>
+				<executions>
+					<execution>
+						<id>generate</id>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+						<phase>process-classes</phase>
+					</execution>
+				</executions>
+				<configuration>
+					<classPatterns>
+						<classPattern>com.github.eciuca.training.krapi.domain.**</classPattern>
+					</classPatterns>
+					<jsonLibrary>jackson2</jsonLibrary>
+					<outputKind>module</outputKind>
+					<optionalAnnotations>jakarta.annotation.Nullable</optionalAnnotations>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 
