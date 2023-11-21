@@ -1,4 +1,17 @@
 services:
+  krapi:
+    depends_on:
+      - mysql
+    image: krapi:0.0.1-SNAPSHOT
+    platform: linux/amd64
+    ports:
+      - 8080:8080
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_PORT: 3306
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
   mysql:
     image: mysql:8
     environment:

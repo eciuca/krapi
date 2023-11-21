@@ -14,9 +14,9 @@ spring:
   liquibase:
     change-log: classpath:config/liquibase/db.changelog-master.xml
   datasource:
-    url: jdbc:mysql://localhost:23306/krapidb?serverTimezone=UTC
-    username: krapi
-    password: krapi
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:23306}/${MYSQL_DATABASE:krapidb}?serverTimezone=UTC&useSSL=false&allowPublicKeyRetrieval=true
+    username: ${MYSQL_USER:krapi}
+    password: ${MYSQL_PASSWORD:krapi}
 
 server:
   error:
