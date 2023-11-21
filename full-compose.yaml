@@ -2,7 +2,7 @@ services:
   krapi:
     depends_on:
       - mysql
-    image: krapi:0.0.1-SNAPSHOT
+    image: eciuca/krapi:latest
     platform: linux/amd64
     ports:
       - 8080:8080
