@@ -1,0 +1,148 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+  http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <!-- Changeset for 'agents' table -->
+    <changeSet id="1" author="eciuca">
+        <createTable tableName="agents">
+            <column name="AGENT_CODE" type="varchar(6)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="AGENT_NAME" type="varchar(40)"/>
+            <column name="WORKING_AREA" type="varchar(35)"/>
+            <column name="COMMISSION" type="decimal(10,2)"/>
+            <column name="PHONE_NO" type="varchar(15)"/>
+            <column name="COUNTRY" type="varchar(25)"/>
+        </createTable>
+    </changeSet>
+
+    <!-- Changeset for 'company' table -->
+    <changeSet id="2" author="eciuca">
+        <createTable tableName="company">
+            <column name="COMPANY_ID" type="varchar(6)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="COMPANY_NAME" type="varchar(25)"/>
+            <column name="COMPANY_CITY" type="varchar(25)"/>
+        </createTable>
+    </changeSet>
+
+    <!-- Changeset for 'customer' table -->
+    <changeSet id="3" author="eciuca">
+        <createTable tableName="customer">
+            <column name="CUST_CODE" type="varchar(6)">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="CUST_NAME" type="varchar(40)"/>
+            <column name="CUST_CITY" type="varchar(35)"/>
+            <column name="WORKING_AREA" type="varchar(35)"/>
+            <column name="CUST_COUNTRY" type="varchar(20)"/>
+            <column name="GRADE" type="decimal(10,0)"/>
+            <column name="OPENING_AMT" type="decimal(12,2)"/>
+            <column name="RECEIVE_AMT" type="decimal(12,2)"/>
+            <column name="PAYMENT_AMT" type="decimal(12,2)"/>
+            <column name="OUTSTANDING_AMT" type="decimal(12,2)"/>
+            <column name="PHONE_NO" type="varchar(17)"/>
+            <column name="AGENT_CODE" type="varchar(6)"/>
+        </createTable>
+    </changeSet>
+
+    <!-- Changeset for 'daysorder' table -->
+    <changeSet id="4" author="eciuca">
+        <createTable tableName="daysorder">
+            <column name="ORD_NUM" type="decimal(6,0)">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="ORD_AMOUNT" type="decimal(12,2)"/>
+            <column name="ADVANCE_AMOUNT" type="decimal(12,2)"/>
+            <column name="ORD_DATE" type="date"/>
+            <column name="CUST_CODE" type="varchar(6)"/>
+            <column name="AGENT_CODE" type="varchar(6)"/>
+            <column name="ORD_DESCRIPTION" type="varchar(60)"/>
+        </createTable>
+    </changeSet>
+
+    <!-- Changeset for 'despatch' table -->
+    <changeSet id="5" author="eciuca">
+        <createTable tableName="despatch">
+            <column name="DES_NUM" type="varchar(6)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="DES_DATE" type="date"/>
+            <column name="DES_AMOUNT" type="decimal(12,2)"/>
+            <column name="ORD_NUM" type="decimal(6,0)"/>
+            <column name="ORD_DATE" type="date"/>
+            <column name="ORD_AMOUNT" type="decimal(12,2)"/>
+            <column name="AGENT_CODE" type="varchar(6)"/>
+        </createTable>
+    </changeSet>
+
+    <!-- Changeset for 'foods' table -->
+    <changeSet id="6" author="eciuca">
+        <createTable tableName="foods">
+            <column name="ITEM_ID" type="varchar(6)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="ITEM_NAME" type="varchar(25)"/>
+            <column name="ITEM_UNIT" type="varchar(5)"/>
+            <column name="COMPANY_ID" type="varchar(6)"/>
+        </createTable>
+    </changeSet>
+
+    <!-- Changeset for 'listofitem' table -->
+    <changeSet id="7" author="eciuca">
+        <createTable tableName="listofitem">
+            <column name="ITEMCODE" type="varchar(6)">
+                <constraints unique="true" nullable="false"/>
+            </column>
+            <column name="ITEMNAME" type="varchar(25)"/>
+            <column name="BATCHCODE" type="varchar(35)"/>
+            <column name="CONAME" type="varchar(35)"/>
+        </createTable>
+    </changeSet>
+
+    <!-- Changeset for 'orders' table -->
+    <changeSet id="8" author="eciuca">
+        <createTable tableName="orders">
+            <column name="ORD_NUM" type="decimal(6,0)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="ORD_AMOUNT" type="decimal(12,2)"/>
+            <column name="ADVANCE_AMOUNT" type="decimal(12,2)"/>
+            <column name="ORD_DATE" type="date"/>
+            <column name="CUST_CODE" type="varchar(6)"/>
+            <column name="AGENT_CODE" type="varchar(6)"/>
+            <column name="ORD_DESCRIPTION" type="varchar(60)"/>
+        </createTable>
+    </changeSet>
+
+    <!-- Changeset for 'student' table -->
+    <changeSet id="9" author="eciuca">
+        <createTable tableName="student">
+            <column name="ID" type="decimal(6,0)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="NAME" type="varchar(30)"/>
+            <column name="TITLE" type="varchar(25)"/>
+            <column name="CLASS" type="varchar(5)" />
+            <column name="SECTION" type="varchar(1)"/>
+            <column name="ROLLID" type="decimal(3,0)"/>
+        </createTable>
+    </changeSet>
+
+    <!-- Changeset for 'studentreport' table -->
+    <changeSet id="10" author="eciuca">
+        <createTable tableName="studentreport">
+            <column name="ID" type="decimal(6,0)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="STUDENT_ID" type="decimal(6,0)"/>
+            <column name="GRADE" type="varchar(5)"/>
+            <column name="SEMESTER" type="varchar(5)"/>
+            <column name="CLASS_ATTENDED" type="decimal(25,0)"/>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

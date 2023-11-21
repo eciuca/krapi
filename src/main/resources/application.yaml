@@ -1,0 +1,40 @@
+spring:
+  profiles:
+    default: local
+  jpa:
+    open-in-view: true
+    hibernate:
+      ddl-auto: update
+      dialect: org.hibernate.dialect.MySQL8Dialect
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: ${foodbanks.oidc.issuer}
+  liquibase:
+    change-log: classpath:config/liquibase/db.changelog-master.xml
+  datasource:
+    url: jdbc:mysql://localhost:23306/krapidb?serverTimezone=UTC
+    username: krapi
+    password: krapi
+
+server:
+  error:
+    include-message: always
+  servlet:
+    context-path: /krapi
+
+management:
+  security:
+    enabled: false
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,caches,raakvlakken,threaddump,heapdump,loggers,prometheus,env,beans
+
+logging:
+  level:
+    liquibase: INFO
