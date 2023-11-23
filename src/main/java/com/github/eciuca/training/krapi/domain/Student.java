@@ -14,6 +14,7 @@ import lombok.ToString;
 @ToString(onlyExplicitlyIncluded = true)
 public class Student {
     @Id
+    @GeneratedValue
     @EqualsAndHashCode.Include
     private Long id;
     @Column(name = "CLASS")
