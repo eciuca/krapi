@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-@RepositoryRestResource(path = "agents")
+@RepositoryRestResource(path = "orders")
 public interface OrderRepository extends JpaRepository<Order, Long> {
 
     @RestResource(path = "by-customer-id", rel = "by-customer-id")
